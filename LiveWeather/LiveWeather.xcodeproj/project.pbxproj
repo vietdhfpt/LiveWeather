@@ -13,6 +13,7 @@
 		2241B1CF21057A9D008DBB97 /* LiveWeather.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2241B1CD21057A9D008DBB97 /* LiveWeather.xcdatamodeld */; };
 		2241B1D121057A9D008DBB97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2241B1D021057A9D008DBB97 /* Assets.xcassets */; };
 		2241B1D421057A9D008DBB97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2241B1D221057A9D008DBB97 /* LaunchScreen.storyboard */; };
+		2241B1DC21057BBE008DBB97 /* LiveWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241B1DB21057BBE008DBB97 /* LiveWeather.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		2241B1D021057A9D008DBB97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2241B1D321057A9D008DBB97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2241B1D521057A9D008DBB97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2241B1DB21057BBE008DBB97 /* LiveWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveWeather.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		2241B1C521057A9D008DBB97 /* LiveWeather */ = {
 			isa = PBXGroup;
 			children = (
+				2241B1DD21057BC4008DBB97 /* Model */,
 				2241B1C621057A9D008DBB97 /* AppDelegate.swift */,
 				2241B1C821057A9D008DBB97 /* ViewController.swift */,
 				2241B1CA21057A9D008DBB97 /* Main.storyboard */,
@@ -65,6 +68,14 @@
 				2241B1CD21057A9D008DBB97 /* LiveWeather.xcdatamodeld */,
 			);
 			path = LiveWeather;
+			sourceTree = "<group>";
+		};
+		2241B1DD21057BC4008DBB97 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2241B1DB21057BBE008DBB97 /* LiveWeather.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2241B1DC21057BBE008DBB97 /* LiveWeather.swift in Sources */,
 				2241B1CF21057A9D008DBB97 /* LiveWeather.xcdatamodeld in Sources */,
 				2241B1C921057A9D008DBB97 /* ViewController.swift in Sources */,
 				2241B1C721057A9D008DBB97 /* AppDelegate.swift in Sources */,
