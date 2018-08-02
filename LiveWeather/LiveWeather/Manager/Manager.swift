@@ -13,8 +13,18 @@ typealias CompletionHandler = (Any?, Error?) -> Void
 
 class Manager {
     
+    
     static let shared = Manager()
     
+    // MARK: - Parse Data.
+    
+    
+    /// Parse json from url.
+    ///
+    /// - Parameters:
+    ///   - lat: Latitude of location.
+    ///   - lon: Longitude of location.
+    ///   - completionHandler: Handle completion.
     func parseJSON(lat: Double, lon: Double, completionHandler: @escaping CompletionHandler) {
         let weatherUrl = "http://api.openweathermap.org/data/2.5/forecast/daily?lat=\(lat)&lon=\(lon)&cnt=10&mode=json&appid=c80a2e47667cedab4873abb8a9fff762"
         

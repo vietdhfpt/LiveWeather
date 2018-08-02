@@ -10,19 +10,17 @@ import Foundation
 
 typealias JSON = Dictionary<AnyHashable, Any>
 
+// MARK: - LiveWeather.
 struct LiveWeather {
     let city: City?
-    let cod: String
     var weathers: [Weather] = []
     
     init?(json: JSON) {
         guard let city = json["city"] as? JSON,
-            let cod = json["cod"] as? String,
             let weathers = json["list"] as? [JSON] else {
             return nil
         }
         self.city = City(json: city)
-        self.cod = cod
         for weather in weathers {
             if let weather = Weather(json: weather) {
                 self.weathers.append(weather)
@@ -31,6 +29,7 @@ struct LiveWeather {
     }
 }
 
+// MARK: - City.
 struct City {
     let id: Int
     let name: String
@@ -48,6 +47,7 @@ struct City {
     }
 }
 
+// MARK: - Coordinate.
 struct Coordinate {
     let lon: Double
     let lat: Double
@@ -62,6 +62,7 @@ struct Coordinate {
     }
 }
 
+// MARK: - Weather.
 struct Weather {
     let date: Double
     let temp: Temp?
@@ -83,6 +84,7 @@ struct Weather {
     }
 }
 
+// MARK: - Temperature.
 struct Temp {
     let day: Double
     let min: Double
@@ -109,6 +111,7 @@ struct Temp {
     }
 }
 
+// MARK: - InfoWeather.
 struct InfoWeather {
     let main: String
     let description: String
