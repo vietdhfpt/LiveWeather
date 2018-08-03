@@ -27,4 +27,13 @@ extension Double {
         
         return dayTimePeriodFormatter.string(from: date)
     }
+    
+    // Convert time interval to day
+    var convertTimeIntervalToDay: String? {
+        let date = Date(timeIntervalSince1970: self)
+        let dayTimePeriodFormatter = DateFormatter()
+        dayTimePeriodFormatter.dateFormat = "EEEE"
+        
+        return dayTimePeriodFormatter.string(from: date)
+    }
 }

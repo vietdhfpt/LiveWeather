@@ -8,6 +8,10 @@
 
 import UIKit
 
+struct SegueIdentifier {
+    static let embedInfoWeather = "embedInfoWeather"
+}
+
 enum TypeWeather: String {
     case rain = "Rain"
     case sunny = "Sunny"
@@ -15,9 +19,9 @@ enum TypeWeather: String {
     var imageString: String {
         switch self {
         case .rain:
-            return "icons8-sun"
+            return "icons8-torrential_rain"
         case .sunny:
-           return "icons8-torrential_rain"
+            return "icons8-sun"
         }
     }
 }
@@ -31,9 +35,12 @@ class ViewController: UIViewController {
     var liveWeather: LiveWeather? {
         didSet {
             setupUI()
+            self.infoWeatherTVC?.liveWeather = self.liveWeather
         }
     }
  
+    private var infoWeatherTVC: InfoWeatherTVC?
+    
     // MARK: - Outlets.
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tempLabel: UILabel!
@@ -42,6 +49,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var imageTypeWeather: UIImageView!
     @IBOutlet weak var minTempLabel: UILabel!
     @IBOutlet weak var maxTempLabel: UILabel!
+    @IBOutlet weak var bottomContainer: UIView!
     
     // MARK: - Life Cycles.
     override func viewDidLoad() {
@@ -81,8 +89,8 @@ class ViewController: UIViewController {
                 self.imageTypeWeather.image = UIImage(named: imageTypeWeather.imageString)
             }
             
-            self.minTempLabel.text = String.init(format: "min: " + "%0.f" + "°", temp.min.toCelsius)
-            self.maxTempLabel.text = String.init(format: "max: " + "%0.f" + "°", temp.max.toCelsius)
+            self.minTempLabel.text = String.init(format: "↑ " + "%0.f" + "°", temp.min.toCelsius)
+            self.maxTempLabel.text = String.init(format: "↓ " + "%0.f" + "°", temp.max.toCelsius)
         }
     }
     
@@ -98,10 +106,25 @@ class ViewController: UIViewController {
     }
     
     // MARK: - Get data.
+    
     func getWeatherData() {
         Manager.shared.parseJSON(lat: self.lat, lon: self.lon) { (data, error) in
             guard let liveWeather = data as? LiveWeather else { return }
             self.liveWeather = liveWeather
+        }
+    }
+    
+    // MARK: - Passed data.
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier ?? "" {
+        case SegueIdentifier.embedInfoWeather:
+            guard let infoWeather = segue.destination as? InfoWeatherTVC else {
+                return
+            }
+            self.infoWeatherTVC = infoWeather
+        default:
+            return
         }
     }
 }

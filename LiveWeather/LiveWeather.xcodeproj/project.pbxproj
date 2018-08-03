@@ -17,6 +17,8 @@
 		2241B1D421057A9D008DBB97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2241B1D221057A9D008DBB97 /* LaunchScreen.storyboard */; };
 		2241B1DC21057BBE008DBB97 /* LiveWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241B1DB21057BBE008DBB97 /* LiveWeather.swift */; };
 		2241B1E1210580F1008DBB97 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241B1E0210580F1008DBB97 /* Manager.swift */; };
+		22F832AC211358CA00A13E57 /* InfoWeatherTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F832AB211358CA00A13E57 /* InfoWeatherTVC.swift */; };
+		22F832AE21135B1800A13E57 /* InfoWeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F832AD21135B1800A13E57 /* InfoWeatherTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		2241B1D521057A9D008DBB97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2241B1DB21057BBE008DBB97 /* LiveWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveWeather.swift; sourceTree = "<group>"; };
 		2241B1E0210580F1008DBB97 /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
+		22F832AB211358CA00A13E57 /* InfoWeatherTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoWeatherTVC.swift; sourceTree = "<group>"; };
+		22F832AD21135B1800A13E57 /* InfoWeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoWeatherTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +127,8 @@
 		22779D902112AE6500A2FB00 /* BottomView */ = {
 			isa = PBXGroup;
 			children = (
+				22F832AB211358CA00A13E57 /* InfoWeatherTVC.swift */,
+				22F832AD21135B1800A13E57 /* InfoWeatherTableViewCell.swift */,
 			);
 			path = BottomView;
 			sourceTree = "<group>";
@@ -199,9 +205,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22F832AC211358CA00A13E57 /* InfoWeatherTVC.swift in Sources */,
 				222A142021130893000F841A /* Extension+Double.swift in Sources */,
 				2241B1DC21057BBE008DBB97 /* LiveWeather.swift in Sources */,
 				222A1422211308B5000F841A /* Extension+Date.swift in Sources */,
+				22F832AE21135B1800A13E57 /* InfoWeatherTableViewCell.swift in Sources */,
 				2241B1CF21057A9D008DBB97 /* LiveWeather.xcdatamodeld in Sources */,
 				2241B1C921057A9D008DBB97 /* ViewController.swift in Sources */,
 				2241B1C721057A9D008DBB97 /* AppDelegate.swift in Sources */,
