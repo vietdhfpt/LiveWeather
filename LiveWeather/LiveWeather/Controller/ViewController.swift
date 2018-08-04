@@ -12,6 +12,7 @@ import UIKit
 
 struct SegueIdentifier {
     static let embedInfoWeather = "embedInfoWeather"
+    static let embedTempWeather = "embedTempWeather"
 }
 
 class ViewController: UIViewController {
@@ -20,14 +21,20 @@ class ViewController: UIViewController {
     let lat: Double = 51.503311
     let lon: Double = 0.127740
     
+    // Gets data live weather
     var liveWeather: LiveWeather? {
         didSet {
-            self.setupTopView(index: 0)
+            DispatchQueue.main.async {
+                self.removeData()
+                self.setupData(index: 0)
+            }
             self.infoWeatherTVC?.liveWeather = self.liveWeather
+            self.tempWeatherCollectionVC?.liveWeather = self.liveWeather
         }
     }
  
     private var infoWeatherTVC: InfoWeatherTVC?
+    private var tempWeatherCollectionVC: TemperatureWeatherVC?
 
     // MARK: - Outlets.
     
@@ -43,50 +50,57 @@ class ViewController: UIViewController {
     // MARK: - Life Cycles.
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.resetUI()
+        self.removeData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.getWeatherData()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(getIndex(_:)), name: .selectedIndex, object: nil)
     }
 
-    // MARK: - Interface.
-    
-    // Setup UX.
-    func setupTopView(index: Int) {
-        DispatchQueue.main.async {
-            guard let liveWeather = self.liveWeather,
-                let city = liveWeather.city,
-                index < liveWeather.weathers.count else {
-                    return
-            }
-            
-            self.titleLabel.text = city.name
-            
-            let weather = liveWeather.weathers[index]
-            guard let temp = weather.temp else {
-                return
-            }
-            self.tempLabel.text = String.init(format: "%0.f" + "°C", temp.day.toCelsius)
-            self.timeLabel.text = weather.date.convertTimeIntervalToDate
-            
-            guard let infoWeather = weather.infoWeathers.first else {
-                return
-            }
-            
-            self.typeWeatherLabel.text = infoWeather.main
-            if let imageTypeWeather = TypeOfWeather.init(rawValue: infoWeather.main) {
-                self.imageTypeWeather.image = UIImage(named: imageTypeWeather.imageString)
-            }
-            
-            self.minTempLabel.text = String.init(format: "↑ " + "%0.f" + "°", temp.min.toCelsius)
-            self.maxTempLabel.text = String.init(format: "↓ " + "%0.f" + "°", temp.max.toCelsius)
-        }
+    deinit {
+        print("Remove NotificationCenter Deinit")
+        NotificationCenter.default.removeObserver(self)
     }
     
-    // Clear UX.
-    func resetUI() {
+    // MARK: - Interface.
+    
+    /// Setup data
+    ///
+    /// - Parameter index: Index of weathers
+    func setupData(index: Int) {
+        guard let liveWeather = self.liveWeather,
+            let city = liveWeather.city,
+            index < liveWeather.weathers.count else {
+                return
+        }
+        
+        self.titleLabel.text = city.name
+        
+        let weather = liveWeather.weathers[index]
+        guard let temp = weather.temp else {
+            return
+        }
+        self.tempLabel.text = temp.day.toCelsius.tempDisplay2
+        self.timeLabel.text = weather.date.convertTimeIntervalToDate
+        
+        guard let infoWeather = weather.infoWeathers.first else {
+            return
+        }
+        
+        self.typeWeatherLabel.text = infoWeather.main
+        if let imageTypeWeather = TypeOfWeather.init(rawValue: infoWeather.main) {
+            self.imageTypeWeather.image = UIImage(named: imageTypeWeather.imageString)
+        }
+        
+        self.minTempLabel.text = temp.min.toCelsius.tempDisplay1
+        self.maxTempLabel.text = temp.max.toCelsius.tempDisplay1
+    }
+    
+    // Remove UX.
+    func removeData() {
         self.titleLabel.text = ""
         self.tempLabel.text = ""
         self.timeLabel.text = ""
@@ -96,12 +110,22 @@ class ViewController: UIViewController {
         self.maxTempLabel.text = ""
     }
     
-    // MARK: - Get data.
+    // MARK: - Gets data.
     
+    // Get live weather
     func getWeatherData() {
         Manager.shared.parseJSON(lat: self.lat, lon: self.lon) { (data, error) in
             guard let liveWeather = data as? LiveWeather else { return }
             self.liveWeather = liveWeather
+        }
+    }
+    
+    /// Get index
+    ///
+    /// - Parameter notification: Handle notification
+    @objc func getIndex(_ notification: Notification) {
+        if let index = notification.userInfo?["index"] as? Int {
+           self.setupData(index: index)
         }
     }
     
@@ -114,19 +138,14 @@ class ViewController: UIViewController {
                 return
             }
             self.infoWeatherTVC = infoWeather
-            self.infoWeatherTVC?.delegate = self
+        case SegueIdentifier.embedTempWeather:
+            guard let tempWeatherCollectionVC = segue.destination as? TemperatureWeatherVC else {
+                return
+            }
+            self.tempWeatherCollectionVC = tempWeatherCollectionVC
         default:
             return
         }
-    }
-}
-
-// MARK: - Delegate.
-
-extension ViewController: InfoWeatherTVCDelegate {
-    func didSelectedIndex(index: Int) {
-        self.resetUI()
-        self.setupTopView(index: index)
     }
 }
 

@@ -9,8 +9,7 @@
 /* Begin PBXBuildFile section */
 		222A142021130893000F841A /* Extension+Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222A141F21130893000F841A /* Extension+Double.swift */; };
 		222A1422211308B5000F841A /* Extension+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222A1421211308B5000F841A /* Extension+Date.swift */; };
-		223E7C8021153BEE00622800 /* InfoCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223E7C7F21153BEE00622800 /* InfoCollectionVC.swift */; };
-		223E7C82211540CA00622800 /* InfoWeatherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223E7C81211540CA00622800 /* InfoWeatherCollectionViewCell.swift */; };
+		223E7C8021153BEE00622800 /* TemperatureWeatherVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223E7C7F21153BEE00622800 /* TemperatureWeatherVC.swift */; };
 		223E7C86211551C200622800 /* Extension+Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223E7C85211551C200622800 /* Extension+Enum.swift */; };
 		2241B1C721057A9D008DBB97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241B1C621057A9D008DBB97 /* AppDelegate.swift */; };
 		2241B1C921057A9D008DBB97 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241B1C821057A9D008DBB97 /* ViewController.swift */; };
@@ -20,6 +19,7 @@
 		2241B1D421057A9D008DBB97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2241B1D221057A9D008DBB97 /* LaunchScreen.storyboard */; };
 		2241B1DC21057BBE008DBB97 /* LiveWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241B1DB21057BBE008DBB97 /* LiveWeather.swift */; };
 		2241B1E1210580F1008DBB97 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2241B1E0210580F1008DBB97 /* Manager.swift */; };
+		226E60BB2115B5FF000A7FE6 /* Extension+Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E60BA2115B5FF000A7FE6 /* Extension+Notification.swift */; };
 		22F832AC211358CA00A13E57 /* InfoWeatherTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F832AB211358CA00A13E57 /* InfoWeatherTVC.swift */; };
 		22F832AE21135B1800A13E57 /* InfoWeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F832AD21135B1800A13E57 /* InfoWeatherTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -27,8 +27,7 @@
 /* Begin PBXFileReference section */
 		222A141F21130893000F841A /* Extension+Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Double.swift"; sourceTree = "<group>"; };
 		222A1421211308B5000F841A /* Extension+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Date.swift"; sourceTree = "<group>"; };
-		223E7C7F21153BEE00622800 /* InfoCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCollectionVC.swift; sourceTree = "<group>"; };
-		223E7C81211540CA00622800 /* InfoWeatherCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoWeatherCollectionViewCell.swift; sourceTree = "<group>"; };
+		223E7C7F21153BEE00622800 /* TemperatureWeatherVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureWeatherVC.swift; sourceTree = "<group>"; };
 		223E7C85211551C200622800 /* Extension+Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Enum.swift"; sourceTree = "<group>"; };
 		2241B1C321057A9D008DBB97 /* LiveWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2241B1C621057A9D008DBB97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -40,6 +39,7 @@
 		2241B1D521057A9D008DBB97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2241B1DB21057BBE008DBB97 /* LiveWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveWeather.swift; sourceTree = "<group>"; };
 		2241B1E0210580F1008DBB97 /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
+		226E60BA2115B5FF000A7FE6 /* Extension+Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Notification.swift"; sourceTree = "<group>"; };
 		22F832AB211358CA00A13E57 /* InfoWeatherTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoWeatherTVC.swift; sourceTree = "<group>"; };
 		22F832AD21135B1800A13E57 /* InfoWeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoWeatherTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,6 +73,7 @@
 				222A141F21130893000F841A /* Extension+Double.swift */,
 				222A1421211308B5000F841A /* Extension+Date.swift */,
 				223E7C85211551C200622800 /* Extension+Enum.swift */,
+				226E60BA2115B5FF000A7FE6 /* Extension+Notification.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -143,8 +144,7 @@
 		22779D8F2112ADC400A2FB00 /* MiddleView */ = {
 			isa = PBXGroup;
 			children = (
-				223E7C7F21153BEE00622800 /* InfoCollectionVC.swift */,
-				223E7C81211540CA00622800 /* InfoWeatherCollectionViewCell.swift */,
+				223E7C7F21153BEE00622800 /* TemperatureWeatherVC.swift */,
 			);
 			path = MiddleView;
 			sourceTree = "<group>";
@@ -233,14 +233,14 @@
 				223E7C86211551C200622800 /* Extension+Enum.swift in Sources */,
 				22F832AC211358CA00A13E57 /* InfoWeatherTVC.swift in Sources */,
 				222A142021130893000F841A /* Extension+Double.swift in Sources */,
-				223E7C82211540CA00622800 /* InfoWeatherCollectionViewCell.swift in Sources */,
 				2241B1DC21057BBE008DBB97 /* LiveWeather.swift in Sources */,
 				222A1422211308B5000F841A /* Extension+Date.swift in Sources */,
 				22F832AE21135B1800A13E57 /* InfoWeatherTableViewCell.swift in Sources */,
+				226E60BB2115B5FF000A7FE6 /* Extension+Notification.swift in Sources */,
 				2241B1CF21057A9D008DBB97 /* LiveWeather.xcdatamodeld in Sources */,
 				2241B1C921057A9D008DBB97 /* ViewController.swift in Sources */,
 				2241B1C721057A9D008DBB97 /* AppDelegate.swift in Sources */,
-				223E7C8021153BEE00622800 /* InfoCollectionVC.swift in Sources */,
+				223E7C8021153BEE00622800 /* TemperatureWeatherVC.swift in Sources */,
 				2241B1E1210580F1008DBB97 /* Manager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

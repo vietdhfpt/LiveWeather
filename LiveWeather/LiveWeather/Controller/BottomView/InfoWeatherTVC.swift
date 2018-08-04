@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol InfoWeatherTVCDelegate {
-    func didSelectedIndex(index: Int)
-}
-
 class InfoWeatherTVC: UITableViewController {
     
     // Get data live weather.
@@ -24,8 +20,6 @@ class InfoWeatherTVC: UITableViewController {
     }
     // Main view controller.
     var mainViewController: ViewController?
-    
-    var delegate: InfoWeatherTVCDelegate?
     
     // MARK: - Life cycles.
     
@@ -78,7 +72,10 @@ extension InfoWeatherTVC {
 
 extension InfoWeatherTVC {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.delegate?.didSelectedIndex(index: indexPath.row)
+        let userInfo = ["index": indexPath.row]
+        
+        // Post a notification
+        NotificationCenter.default.post(name: .selectedIndex, object: nil, userInfo: userInfo)
     }
 }
 

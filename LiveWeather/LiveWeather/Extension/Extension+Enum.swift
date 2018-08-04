@@ -24,9 +24,9 @@ enum TypeOfWeather: String {
         case .sunny:
             return "icons8-sun"
         case .clear:
-            return ""
+            return "icons8-partly_cloudy_day_filled"
         case .clouds:
-            return ""
+            return "icons8-clouds_filled"
         }
     }
 }
@@ -34,5 +34,21 @@ enum TypeOfWeather: String {
 // MARK: - Enum Type of Day.
 
 enum TypeOfDay: String {
-    case day, night, eve, morn
+    case day = "day"
+    case night = "night"
+    case eve = "eve"
+    case morn = "morn"
+    
+    var imageString: String {
+        switch self {
+        case .day:
+            return "icons8-sun_filled"
+        case .night:
+            return "icons8-partly_cloudy_night_filled"
+        case .eve:
+            return "icons8-sunset_filled"
+        case .morn:
+            return "icons8-sunrise_filled"
+        }
+    }
 }
