@@ -63,10 +63,10 @@ class TemperatureWeatherVC: UIViewController {
         
         let weather = liveWeather.weathers[index]
         if let temp = weather.temp {
-            self.dayLabel.text = temp.min.toCelsius.tempDisplay2
-            self.morningLabel.text = temp.morn.toCelsius.tempDisplay2
-            self.eveningLabel.text = temp.eve.toCelsius.tempDisplay2
-            self.nightLabel.text = temp.night.toCelsius.tempDisplay2
+            self.dayLabel.text = temp.min.toCelsius.textDisplay2
+            self.morningLabel.text = temp.morn.toCelsius.textDisplay2
+            self.eveningLabel.text = temp.eve.toCelsius.textDisplay2
+            self.nightLabel.text = temp.night.toCelsius.textDisplay2
         }
     }
     

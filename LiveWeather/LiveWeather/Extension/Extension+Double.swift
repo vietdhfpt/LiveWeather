@@ -37,11 +37,11 @@ extension Double {
         return dayTimePeriodFormatter.string(from: date)
     }
     
-    var tempDisplay1: String? {
+    var textDisplay1: String? {
         return String.init(format: "↑ " + "%0.f" + "°", self)
     }
     
-    var tempDisplay2: String? {
+    var textDisplay2: String? {
         return String.init(format: "%0.f" + "°", self)
     }
 }

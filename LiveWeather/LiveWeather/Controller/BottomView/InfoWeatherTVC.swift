@@ -60,8 +60,8 @@ extension InfoWeatherTVC {
             }
             
             if let temp = weathers.temp {
-                cell.minTempLabel.text = String.init(format: "↑ " + "%0.f" + "°", temp.min.toCelsius)
-                cell.maxTempLabel.text = String.init(format: "↓ " + "%0.f" + "°", temp.max.toCelsius)
+                cell.minTempLabel.text = temp.min.toCelsius.textDisplay1
+                cell.maxTempLabel.text = temp.max.toCelsius.textDisplay1
             }
         }
         return cell

@@ -83,7 +83,7 @@ class ViewController: UIViewController {
         guard let temp = weather.temp else {
             return
         }
-        self.tempLabel.text = temp.day.toCelsius.tempDisplay2
+        self.tempLabel.text = temp.day.toCelsius.textDisplay2
         self.timeLabel.text = weather.date.convertTimeIntervalToDate
         
         guard let infoWeather = weather.infoWeathers.first else {
@@ -95,8 +95,8 @@ class ViewController: UIViewController {
             self.imageTypeWeather.image = UIImage(named: imageTypeWeather.imageString)
         }
         
-        self.minTempLabel.text = temp.min.toCelsius.tempDisplay1
-        self.maxTempLabel.text = temp.max.toCelsius.tempDisplay1
+        self.minTempLabel.text = temp.min.toCelsius.textDisplay1
+        self.maxTempLabel.text = temp.max.toCelsius.textDisplay1
     }
     
     // Remove UX.
