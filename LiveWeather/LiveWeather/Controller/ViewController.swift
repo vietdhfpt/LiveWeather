@@ -8,40 +8,29 @@
 
 import UIKit
 
+// MARK: - Segue Identifier.
+
 struct SegueIdentifier {
     static let embedInfoWeather = "embedInfoWeather"
-}
-
-enum TypeWeather: String {
-    case rain = "Rain"
-    case sunny = "Sunny"
-    
-    var imageString: String {
-        switch self {
-        case .rain:
-            return "icons8-torrential_rain"
-        case .sunny:
-            return "icons8-sun"
-        }
-    }
 }
 
 class ViewController: UIViewController {
     
     // MARK: - Variable.
-    let lat: Double = 21.013493
-    let lon: Double = 105.796525
+    let lat: Double = 51.503311
+    let lon: Double = 0.127740
     
     var liveWeather: LiveWeather? {
         didSet {
-            setupUI()
+            self.setupTopView(index: 0)
             self.infoWeatherTVC?.liveWeather = self.liveWeather
         }
     }
  
     private var infoWeatherTVC: InfoWeatherTVC?
-    
+
     // MARK: - Outlets.
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
@@ -62,30 +51,32 @@ class ViewController: UIViewController {
         self.getWeatherData()
     }
 
-    // MARK: - Setup.
+    // MARK: - Interface.
     
     // Setup UX.
-    func setupUI() {
+    func setupTopView(index: Int) {
         DispatchQueue.main.async {
             guard let liveWeather = self.liveWeather,
-                let city = liveWeather.city else {
+                let city = liveWeather.city,
+                index < liveWeather.weathers.count else {
                     return
             }
+            
             self.titleLabel.text = city.name
             
-            let firstWeathers = liveWeather.weathers.first
-            guard let firstWeather = firstWeathers, let temp = firstWeathers?.temp else {
+            let weather = liveWeather.weathers[index]
+            guard let temp = weather.temp else {
                 return
             }
             self.tempLabel.text = String.init(format: "%0.f" + "°C", temp.day.toCelsius)
-            self.timeLabel.text = firstWeather.date.convertTimeIntervalToDate
+            self.timeLabel.text = weather.date.convertTimeIntervalToDate
             
-            guard let firstInfoWeather = firstWeather.infoWeathers.first else {
+            guard let infoWeather = weather.infoWeathers.first else {
                 return
             }
             
-            self.typeWeatherLabel.text = firstInfoWeather.main
-            if let imageTypeWeather = TypeWeather.init(rawValue: firstInfoWeather.main) {
+            self.typeWeatherLabel.text = infoWeather.main
+            if let imageTypeWeather = TypeOfWeather.init(rawValue: infoWeather.main) {
                 self.imageTypeWeather.image = UIImage(named: imageTypeWeather.imageString)
             }
             
@@ -123,9 +114,19 @@ class ViewController: UIViewController {
                 return
             }
             self.infoWeatherTVC = infoWeather
+            self.infoWeatherTVC?.delegate = self
         default:
             return
         }
+    }
+}
+
+// MARK: - Delegate.
+
+extension ViewController: InfoWeatherTVCDelegate {
+    func didSelectedIndex(index: Int) {
+        self.resetUI()
+        self.setupTopView(index: index)
     }
 }
 

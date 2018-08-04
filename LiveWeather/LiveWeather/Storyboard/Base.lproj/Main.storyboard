@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sLG-Br-awb">
-                                <rect key="frame" x="0.0" y="450" width="375" height="342"/>
+                                <rect key="frame" x="10" y="450" width="355" height="342"/>
                                 <connections>
                                     <segue destination="NXr-U5-Bnr" kind="embed" identifier="embedInfoWeather" id="rPc-r6-ig8"/>
                                 </connections>
@@ -107,7 +107,7 @@
                                         </constraints>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.83137254901960778" blue="0.33725490196078434" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.99607843137254903" green="0.82745098039215681" blue="0.38039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="hbg-Au-0jC" firstAttribute="leading" secondItem="1II-Cg-tpA" secondAttribute="leading" id="89g-Mg-rje"/>
                                     <constraint firstAttribute="trailing" secondItem="0MI-Zn-P5D" secondAttribute="trailing" id="CUg-LH-eWe"/>
@@ -121,7 +121,7 @@
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NqY-OK-4Ii">
-                                <rect key="frame" x="0.0" y="330" width="375" height="120"/>
+                                <rect key="frame" x="10" y="330" width="355" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="ABC-bg-l2U"/>
                                 </constraints>
@@ -133,14 +133,14 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="1II-Cg-tpA" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ANZ-K8-snF"/>
-                            <constraint firstItem="NqY-OK-4Ii" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="EUb-82-gs2"/>
+                            <constraint firstItem="NqY-OK-4Ii" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="EUb-82-gs2"/>
                             <constraint firstItem="sLG-Br-awb" firstAttribute="top" secondItem="NqY-OK-4Ii" secondAttribute="bottom" id="Q11-30-6Wp"/>
                             <constraint firstItem="1II-Cg-tpA" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="YHD-qV-0A0"/>
-                            <constraint firstItem="sLG-Br-awb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ZlC-rT-ur2"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sLG-Br-awb" secondAttribute="trailing" id="cVf-mg-60B"/>
+                            <constraint firstItem="sLG-Br-awb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="ZlC-rT-ur2"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sLG-Br-awb" secondAttribute="trailing" constant="10" id="cVf-mg-60B"/>
                             <constraint firstItem="NqY-OK-4Ii" firstAttribute="top" secondItem="1II-Cg-tpA" secondAttribute="bottom" id="heG-4s-bCu"/>
                             <constraint firstAttribute="bottom" secondItem="sLG-Br-awb" secondAttribute="bottom" constant="20" id="ifm-mE-S2F"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NqY-OK-4Ii" secondAttribute="trailing" id="v28-yE-ePM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NqY-OK-4Ii" secondAttribute="trailing" constant="10" id="v28-yE-ePM"/>
                             <constraint firstItem="1II-Cg-tpA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="vTc-s8-kuQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -160,35 +160,68 @@
             </objects>
             <point key="canvasLocation" x="32.799999999999997" y="36.945812807881772"/>
         </scene>
-        <!--View Controller-->
+        <!--Info CollectionVC-->
         <scene sceneID="2MI-CE-bwE">
             <objects>
-                <viewController id="L6o-e1-9z0" sceneMemberID="viewController">
+                <viewController id="L6o-e1-9z0" customClass="InfoCollectionVC" customModule="LiveWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xI9-7O-KYw">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+                        <rect key="frame" x="0.0" y="0.0" width="355" height="120"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Smk-ly-8Ht">
+                                <rect key="frame" x="0.0" y="0.0" width="355" height="120"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Sw4-XN-DEI">
+                                    <size key="itemSize" width="80" height="100"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="qoC-8W-D71" customClass="InfoWeatherCollectionViewCell" customModule="LiveWeather" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="10" width="80" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                        <color key="backgroundColor" red="1" green="0.1682638132" blue="0.2278351049" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="L6o-e1-9z0" id="MYh-u3-rbo"/>
+                                    <outlet property="delegate" destination="L6o-e1-9z0" id="B1i-IJ-hdh"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Smk-ly-8Ht" secondAttribute="bottom" id="Iva-0G-M5m"/>
+                            <constraint firstItem="Smk-ly-8Ht" firstAttribute="leading" secondItem="kH0-LK-CXl" secondAttribute="leading" id="q2Q-M2-6gf"/>
+                            <constraint firstItem="kH0-LK-CXl" firstAttribute="trailing" secondItem="Smk-ly-8Ht" secondAttribute="trailing" id="war-I2-vhs"/>
+                            <constraint firstItem="Smk-ly-8Ht" firstAttribute="top" secondItem="xI9-7O-KYw" secondAttribute="top" id="zdP-R7-50C"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="kH0-LK-CXl"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FZD-FL-VEF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="929" y="-71"/>
+            <point key="canvasLocation" x="928.79999999999995" y="-71.674876847290648"/>
         </scene>
         <!--Info WeatherTVC-->
         <scene sceneID="j1l-vv-YQB">
             <objects>
                 <tableViewController id="NXr-U5-Bnr" customClass="InfoWeatherTVC" customModule="LiveWeather" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="gvN-ah-um2">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="342"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="gvN-ah-um2">
+                        <rect key="frame" x="0.0" y="0.0" width="355" height="342"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="InfoWeatherTableViewCell" rowHeight="72" id="IZb-Lb-b0b" customClass="InfoWeatherTableViewCell" customModule="LiveWeather" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="72"/>
+                                <rect key="frame" x="0.0" y="28" width="355" height="72"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IZb-Lb-b0b" id="SJx-1Q-MTC">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="71.666666666666671"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="355" height="71.666666666666671"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mYu-7B-4G8">

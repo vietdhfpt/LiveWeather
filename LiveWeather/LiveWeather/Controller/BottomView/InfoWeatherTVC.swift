@@ -8,8 +8,13 @@
 
 import UIKit
 
+protocol InfoWeatherTVCDelegate {
+    func didSelectedIndex(index: Int)
+}
+
 class InfoWeatherTVC: UITableViewController {
     
+    // Get data live weather.
     var liveWeather: LiveWeather? {
         didSet {
             DispatchQueue.main.async {
@@ -17,6 +22,10 @@ class InfoWeatherTVC: UITableViewController {
             }
         }
     }
+    // Main view controller.
+    var mainViewController: ViewController?
+    
+    var delegate: InfoWeatherTVCDelegate?
     
     // MARK: - Life cycles.
     
@@ -27,9 +36,11 @@ class InfoWeatherTVC: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+}
 
-    // MARK: - Table view data source.
+// MARK: - Table view data source.
 
+extension InfoWeatherTVC {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let liveWeather = self.liveWeather else {
             return 0
@@ -50,7 +61,7 @@ class InfoWeatherTVC: UITableViewController {
             guard !weathers.infoWeathers.isEmpty else {
                 return cell
             }
-            if let imageTypeWeather = TypeWeather.init(rawValue: weathers.infoWeathers[0].main) {
+            if let imageTypeWeather = TypeOfWeather.init(rawValue: weathers.infoWeathers[0].main) {
                 cell.imgTypeWeather.image = UIImage(named: imageTypeWeather.imageString)
             }
             
@@ -60,6 +71,14 @@ class InfoWeatherTVC: UITableViewController {
             }
         }
         return cell
+    }
+}
+
+// MARK: - Table view delegate.
+
+extension InfoWeatherTVC {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.delegate?.didSelectedIndex(index: indexPath.row)
     }
 }
 
