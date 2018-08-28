@@ -9,7 +9,6 @@
 import UIKit
 
 // MARK: - Segue Identifier.
-
 struct SegueIdentifier {
     static let embedInfoWeather = "embedInfoWeather"
     static let embedTempWeather = "embedTempWeather"
@@ -56,13 +55,6 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.getWeatherData()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(getIndex(_:)), name: .selectedIndex, object: nil)
-    }
-
-    deinit {
-        print("Remove NotificationCenter Deinit")
-        NotificationCenter.default.removeObserver(self)
     }
     
     // MARK: - Interface.
@@ -120,15 +112,6 @@ class ViewController: UIViewController {
         }
     }
     
-    /// Get index
-    ///
-    /// - Parameter notification: Handle notification
-    @objc func getIndex(_ notification: Notification) {
-        if let index = notification.userInfo?["index"] as? Int {
-           self.setupData(index: index)
-        }
-    }
-    
     // MARK: - Passed data.
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -138,13 +121,24 @@ class ViewController: UIViewController {
                 return
             }
             self.infoWeatherTVC = infoWeather
+            self.infoWeatherTVC?.delegates.add(self)
         case SegueIdentifier.embedTempWeather:
             guard let tempWeatherCollectionVC = segue.destination as? TemperatureWeatherVC else {
                 return
             }
             self.tempWeatherCollectionVC = tempWeatherCollectionVC
+            self.infoWeatherTVC?.delegates.add(self.tempWeatherCollectionVC!)
         default:
             return
+        }
+    }
+}
+
+extension ViewController: InfoWeatherTVCDelegate {
+    func didSelectedIndex(index: Int?) {
+        self.removeData()
+        if let index = index {
+            self.setupData(index: index)
         }
     }
 }

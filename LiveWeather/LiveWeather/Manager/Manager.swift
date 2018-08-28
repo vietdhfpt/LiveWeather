@@ -12,12 +12,8 @@ import Foundation
 typealias CompletionHandler = (Any?, Error?) -> Void
 
 class Manager {
-    
-    
+    // MARK: - Singleton.
     static let shared = Manager()
-    
-    // MARK: - Parse Data.
-    
     
     /// Parse json from url.
     ///

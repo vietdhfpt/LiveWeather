@@ -19,27 +19,18 @@ class TemperatureWeatherVC: UIViewController {
     // Gets data live weather
     var liveWeather: LiveWeather? {
         didSet {
-            DispatchQueue.main.sync {
-                self.removeData()
-                self.setupData(index: 0)
+            if self.liveWeather != nil {
+                DispatchQueue.main.async {
+                    self.removeData()
+                    self.setupData(index: 0)
+                }
             }
         }
     }
-    
+
     // MARK: - Life cycles
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(getIndex(_:)), name: .selectedIndex, object: nil)
-    }
-    
-    deinit {
-        print("Remove NotificationCenter Deinit")
-        NotificationCenter.default.removeObserver(self)
     }
     
     override func didReceiveMemoryWarning() {
@@ -77,12 +68,12 @@ class TemperatureWeatherVC: UIViewController {
         self.eveningLabel.text = ""
         self.nightLabel.text = ""
     }
-    
-    /// Get index
-    ///
-    /// - Parameter notification: Handle notification
-    @objc func getIndex(_ notification: Notification) {
-        if let index = notification.userInfo?["index"] as? Int {
+}
+
+extension TemperatureWeatherVC: InfoWeatherTVCDelegate {
+    func didSelectedIndex(index: Int?) {
+        self.removeData()
+        if let index = index {
             self.setupData(index: index)
         }
     }

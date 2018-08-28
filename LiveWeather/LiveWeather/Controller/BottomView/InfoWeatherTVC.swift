@@ -8,7 +8,49 @@
 
 import UIKit
 
+protocol InfoWeatherTVCDelegate: class {
+    func didSelectedIndex(index: Int?)
+}
+
+class MulticastDelegate<T> {
+    private var delegates = [Weak]()
+    
+    func add(_ delegate: T) {
+        delegates.append(Weak(value: delegate as AnyObject))
+    }
+    
+    func remove(_ delegate: T) {
+        let weak = Weak(value: delegate as AnyObject)
+        if let index = delegates.index(of: weak) {
+            delegates.remove(at: index)
+        }
+    }
+    
+    func invoke(_ invocation: @escaping (T) -> ()) {
+        delegates = delegates.filter({$0.value != nil})
+        delegates.forEach({
+            if let delegate = $0.value as? T {
+                invocation(delegate)
+            }
+        })
+    }
+}
+
+class Weak: Equatable {
+    weak var value: AnyObject?
+    
+    init(value: AnyObject) {
+        self.value = value
+    }
+    
+    static func ==(lhs: Weak, rhs: Weak) -> Bool {
+        return lhs.value === rhs.value
+    }
+}
+
 class InfoWeatherTVC: UITableViewController {
+    
+    var delegates = MulticastDelegate<InfoWeatherTVCDelegate>()
     
     // Get data live weather.
     var liveWeather: LiveWeather? {
@@ -21,8 +63,17 @@ class InfoWeatherTVC: UITableViewController {
     // Main view controller.
     var mainViewController: ViewController?
     
-    // MARK: - Life cycles.
+    var didSelectedIndex: Int? {
+        didSet {
+            delegates.invoke { [weak self] delegate in
+                if let didSelectedIndex = self?.didSelectedIndex {
+                    delegate.didSelectedIndex(index: didSelectedIndex)
+                }
+            }
+        }
+    }
     
+    // MARK: - Life cycles.
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -30,10 +81,13 @@ class InfoWeatherTVC: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    deinit {
+        print("Dead")
+    }
 }
 
 // MARK: - Table view data source.
-
 extension InfoWeatherTVC {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let liveWeather = self.liveWeather else {
@@ -72,10 +126,6 @@ extension InfoWeatherTVC {
 
 extension InfoWeatherTVC {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let userInfo = ["index": indexPath.row]
-        
-        // Post a notification
-        NotificationCenter.default.post(name: .selectedIndex, object: nil, userInfo: userInfo)
+        self.didSelectedIndex = indexPath.row
     }
 }
-
