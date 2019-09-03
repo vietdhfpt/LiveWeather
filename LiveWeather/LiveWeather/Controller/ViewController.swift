@@ -16,6 +16,17 @@ struct SegueIdentifier {
 }
 
 class ViewController: UIViewController {
+
+    // MARK: - Outlets.
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var tempLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var typeWeatherLabel: UILabel!
+    @IBOutlet weak var imageTypeWeather: UIImageView!
+    @IBOutlet weak var minTempLabel: UILabel!
+    @IBOutlet weak var maxTempLabel: UILabel!
+    @IBOutlet weak var bottomContainer: UIView!
     
     // MARK: - Variable.
     let lat: Double = 51.503311
@@ -35,17 +46,6 @@ class ViewController: UIViewController {
  
     private var infoWeatherTVC: InfoWeatherTVC?
     private var tempWeatherCollectionVC: TemperatureWeatherVC?
-
-    // MARK: - Outlets.
-    
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var tempLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var typeWeatherLabel: UILabel!
-    @IBOutlet weak var imageTypeWeather: UIImageView!
-    @IBOutlet weak var minTempLabel: UILabel!
-    @IBOutlet weak var maxTempLabel: UILabel!
-    @IBOutlet weak var bottomContainer: UIView!
     
     // MARK: - Life Cycles.
     override func viewDidLoad() {

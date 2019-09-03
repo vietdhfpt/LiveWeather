@@ -15,7 +15,6 @@ class InfoWeatherTableViewCell: UITableViewCell {
     @IBOutlet weak var minTempLabel: UILabel!
     @IBOutlet weak var maxTempLabel: UILabel!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

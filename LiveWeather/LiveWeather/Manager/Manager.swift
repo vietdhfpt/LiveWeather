@@ -13,7 +13,6 @@ typealias CompletionHandler = (Any?, Error?) -> Void
 
 class Manager {
     
-    
     static let shared = Manager()
     
     // MARK: - Parse Data.
