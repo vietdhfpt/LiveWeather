@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 /// Comletion Handler Type
 typealias CompletionHandler = (Any?, Error?) -> Void
@@ -14,9 +15,6 @@ typealias CompletionHandler = (Any?, Error?) -> Void
 class Manager {
     
     static let shared = Manager()
-    
-    // MARK: - Parse Data.
-    
     
     /// Parse json from url.
     ///
@@ -31,7 +29,7 @@ class Manager {
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let data = data else { return }
             do {
-                guard let jsonData = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else { return }
+                let jsonData = try JSON(data: data)
                 let liveWeather = LiveWeather(json: jsonData)
                 completionHandler(liveWeather, nil)
             } catch let error {

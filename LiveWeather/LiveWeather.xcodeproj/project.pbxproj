@@ -60,17 +60,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		18036744F3C05D4EC2DD90AA /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				8EF14C3696DFBEBB2F9A18B5 /* Pods-LiveWeather.debug.xcconfig */,
-				26231E2CF81D4EE06EA6B28C /* Pods-LiveWeather.release.xcconfig */,
-			);
-			name = Pods;
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		222A141C2113001A000F841A /* Support */ = {
+		04F0A1702332219C00BD1D54 /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				2241B1D521057A9D008DBB97 /* Info.plist */,
@@ -79,7 +69,49 @@
 				2241B1D221057A9D008DBB97 /* LaunchScreen.storyboard */,
 				2241B1CD21057A9D008DBB97 /* LiveWeather.xcdatamodeld */,
 			);
-			path = Support;
+			path = Common;
+			sourceTree = "<group>";
+		};
+		04F0A171233221A600BD1D54 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				22779D8E2112ADB000A2FB00 /* Controller */,
+				223E7C842115511500622800 /* Storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		04F0A172233221DD00BD1D54 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				223E7C83211550F800622800 /* Extension */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		04F0A173233221EB00BD1D54 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				2241B1E0210580F1008DBB97 /* Manager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		04F0A174233221FC00BD1D54 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2241B1DB21057BBE008DBB97 /* LiveWeather.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		18036744F3C05D4EC2DD90AA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8EF14C3696DFBEBB2F9A18B5 /* Pods-LiveWeather.debug.xcconfig */,
+				26231E2CF81D4EE06EA6B28C /* Pods-LiveWeather.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		223E7C83211550F800622800 /* Extension */ = {
@@ -122,30 +154,13 @@
 		2241B1C521057A9D008DBB97 /* LiveWeather */ = {
 			isa = PBXGroup;
 			children = (
-				223E7C83211550F800622800 /* Extension */,
-				22779D8E2112ADB000A2FB00 /* Controller */,
-				223E7C842115511500622800 /* Storyboard */,
-				2241B1DF210580E1008DBB97 /* Manager */,
-				2241B1DD21057BC4008DBB97 /* Model */,
-				222A141C2113001A000F841A /* Support */,
+				04F0A1702332219C00BD1D54 /* Common */,
+				04F0A172233221DD00BD1D54 /* Helpers */,
+				04F0A174233221FC00BD1D54 /* Models */,
+				04F0A173233221EB00BD1D54 /* Network */,
+				04F0A171233221A600BD1D54 /* Views */,
 			);
 			path = LiveWeather;
-			sourceTree = "<group>";
-		};
-		2241B1DD21057BC4008DBB97 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				2241B1DB21057BBE008DBB97 /* LiveWeather.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		2241B1DF210580E1008DBB97 /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-				2241B1E0210580F1008DBB97 /* Manager.swift */,
-			);
-			path = Manager;
 			sourceTree = "<group>";
 		};
 		22779D8E2112ADB000A2FB00 /* Controller */ = {
@@ -453,7 +468,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K6265BR55C;
-				INFOPLIST_FILE = LiveWeather/Support/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/LiveWeather/Common/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.LiveWeather.LiveWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -469,7 +484,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = K6265BR55C;
-				INFOPLIST_FILE = LiveWeather/Support/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/LiveWeather/Common/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.LiveWeather.LiveWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
