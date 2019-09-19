@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04F0A176233234D300BD1D54 /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0A175233234D300BD1D54 /* BaseService.swift */; };
+		04F0A178233234FA00BD1D54 /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F0A177233234FA00BD1D54 /* APIProvider.swift */; };
 		222A142021130893000F841A /* Extension+Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222A141F21130893000F841A /* Extension+Double.swift */; };
 		222A1422211308B5000F841A /* Extension+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222A1421211308B5000F841A /* Extension+Date.swift */; };
 		223E7C8021153BEE00622800 /* TemperatureWeatherVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223E7C7F21153BEE00622800 /* TemperatureWeatherVC.swift */; };
@@ -26,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04F0A175233234D300BD1D54 /* BaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
+		04F0A177233234FA00BD1D54 /* APIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProvider.swift; sourceTree = "<group>"; };
 		222A141F21130893000F841A /* Extension+Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Double.swift"; sourceTree = "<group>"; };
 		222A1421211308B5000F841A /* Extension+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Date.swift"; sourceTree = "<group>"; };
 		223E7C7F21153BEE00622800 /* TemperatureWeatherVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureWeatherVC.swift; sourceTree = "<group>"; };
@@ -93,6 +97,8 @@
 			isa = PBXGroup;
 			children = (
 				2241B1E0210580F1008DBB97 /* Manager.swift */,
+				04F0A175233234D300BD1D54 /* BaseService.swift */,
+				04F0A177233234FA00BD1D54 /* APIProvider.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -324,7 +330,9 @@
 				222A1422211308B5000F841A /* Extension+Date.swift in Sources */,
 				22F832AE21135B1800A13E57 /* InfoWeatherTableViewCell.swift in Sources */,
 				226E60BB2115B5FF000A7FE6 /* Extension+Notification.swift in Sources */,
+				04F0A176233234D300BD1D54 /* BaseService.swift in Sources */,
 				2241B1CF21057A9D008DBB97 /* LiveWeather.xcdatamodeld in Sources */,
+				04F0A178233234FA00BD1D54 /* APIProvider.swift in Sources */,
 				2241B1C921057A9D008DBB97 /* ViewController.swift in Sources */,
 				2241B1C721057A9D008DBB97 /* AppDelegate.swift in Sources */,
 				223E7C8021153BEE00622800 /* TemperatureWeatherVC.swift in Sources */,
@@ -470,7 +478,7 @@
 				DEVELOPMENT_TEAM = K6265BR55C;
 				INFOPLIST_FILE = "$(SRCROOT)/LiveWeather/Common/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.LiveWeather.LiveWeather;
+				PRODUCT_BUNDLE_IDENTIFIER = vietdh.LiveWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -486,7 +494,7 @@
 				DEVELOPMENT_TEAM = K6265BR55C;
 				INFOPLIST_FILE = "$(SRCROOT)/LiveWeather/Common/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.LiveWeather.LiveWeather;
+				PRODUCT_BUNDLE_IDENTIFIER = vietdh.LiveWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

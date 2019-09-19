@@ -28,35 +28,30 @@ class ViewController: UIViewController {
     @IBOutlet weak var maxTempLabel: UILabel!
     @IBOutlet weak var bottomContainer: UIView!
     
-    // MARK: - Variable.
-    let lat: Double = 51.503311
-    let lon: Double = 0.127740
-    
     // Gets data live weather
     var liveWeather: LiveWeather? {
         didSet {
-            DispatchQueue.main.async {
-                self.removeData()
-                self.setupData(index: 0)
-            }
-            self.infoWeatherTVC?.liveWeather = self.liveWeather
-            self.tempWeatherCollectionVC?.liveWeather = self.liveWeather
+            self.setupData(index: 0)
+            self.infoWeatherTVC.liveWeather = self.liveWeather
+            self.tempWeatherCollectionVC.liveWeather = self.liveWeather
         }
     }
  
-    private var infoWeatherTVC: InfoWeatherTVC?
-    private var tempWeatherCollectionVC: TemperatureWeatherVC?
+    private var infoWeatherTVC: InfoWeatherTVC = {
+        let vc = InfoWeatherTVC()
+        return vc
+    }()
+    
+    private var tempWeatherCollectionVC: TemperatureWeatherVC = {
+        let vc = TemperatureWeatherVC()
+        return vc
+    }()
     
     // MARK: - Life Cycles.
     override func viewDidLoad() {
         super.viewDidLoad()
         self.removeData()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         self.getWeatherData()
-        
         NotificationCenter.default.addObserver(self, selector: #selector(getIndex(_:)), name: .selectedIndex, object: nil)
     }
 
@@ -114,8 +109,8 @@ class ViewController: UIViewController {
     
     // Get live weather
     func getWeatherData() {
-        Manager.shared.parseJSON(lat: self.lat, lon: self.lon) { (data, error) in
-            guard let liveWeather = data as? LiveWeather else { return }
+        LiveWeatherService.getWeather { (liveWeather, error) in
+            guard let liveWeather = liveWeather else { return }
             self.liveWeather = liveWeather
         }
     }
@@ -148,4 +143,3 @@ class ViewController: UIViewController {
         }
     }
 }
-

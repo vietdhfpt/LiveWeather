@@ -19,7 +19,7 @@ class TemperatureWeatherVC: UIViewController {
     // Gets data live weather
     var liveWeather: LiveWeather? {
         didSet {
-            DispatchQueue.main.sync {
+            DispatchQueue.main.async {
                 self.removeData()
                 self.setupData(index: 0)
             }
@@ -30,21 +30,12 @@ class TemperatureWeatherVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(getIndex(_:)), name: .selectedIndex, object: nil)
     }
     
     deinit {
         print("Remove NotificationCenter Deinit")
         NotificationCenter.default.removeObserver(self)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Data

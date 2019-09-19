@@ -8,34 +8,43 @@
 
 import Foundation
 import SwiftyJSON
+import Moya
 
-/// Comletion Handler Type
-typealias CompletionHandler = (Any?, Error?) -> Void
+enum API {
+    case getWeather
+}
 
-class Manager {
+extension API: TargetType {
+    static let baseUrl = "http://api.openweathermap.org/data/2.5/forecast/daily?lat=51.503311&lon=0.127740&cnt=10&mode=json&appid=c80a2e47667cedab4873abb8a9fff762"
     
-    static let shared = Manager()
+    var baseURL: URL {
+        return URL(string: API.baseUrl)!
+    }
     
-    /// Parse json from url.
-    ///
-    /// - Parameters:
-    ///   - lat: Latitude of location.
-    ///   - lon: Longitude of location.
-    ///   - completionHandler: Handle completion.
-    func parseJSON(lat: Double, lon: Double, completionHandler: @escaping CompletionHandler) {
-        let weatherUrl = "http://api.openweathermap.org/data/2.5/forecast/daily?lat=\(lat)&lon=\(lon)&cnt=10&mode=json&appid=c80a2e47667cedab4873abb8a9fff762"
-        
-        guard let url = URL(string: weatherUrl) else { return }
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            guard let data = data else { return }
-            do {
-                let jsonData = try JSON(data: data)
-                let liveWeather = LiveWeather(json: jsonData)
-                completionHandler(liveWeather, nil)
-            } catch let error {
-                completionHandler(nil, error)
-            }
-        }.resume()
+    var path: String {
+        return ""
+    }
+    
+    var method: Moya.Method {
+        switch self {
+        case .getWeather:
+            return .get
+        }
+    }
+    
+    var sampleData: Data {
+        return Data()
+    }
+    
+    var task: Task {
+        switch self {
+        case .getWeather:
+            return .requestPlain
+        }
+    }
+    
+    var headers: [String : String]? {
+        return nil
     }
     
 }
